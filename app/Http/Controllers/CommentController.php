@@ -22,7 +22,7 @@ class CommentController
             "comment" => $validated["comment"],
             "post_id" => $validated["post_id"],
         ]);
-        return redirect("/comments");
+        return redirect("/posts/" . $validated["post_id"]);
     }
 
     public function edit(Comment $comment) {

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
-use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class PostController
@@ -26,7 +25,7 @@ class PostController
     public function store(Request $request) {
         $validated = $request->validate([
             "content" => ["required", "max:255"],
-            "category_id" => ["required"]
+            "category_id" => []
         ]);          
         Post::create([
             "content" => $validated["content"],
