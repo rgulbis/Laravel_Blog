@@ -4,12 +4,12 @@
     <form method="POST" action="/posts/{{ $post->id }}">
         @csrf
         @method('PUT')
-        <input name="content" type="text" placeholder="Edited post.." value="{{ old("content", $post->content) }}">
+        <textarea name="content" placeholder="Edited post..">{{ old("content", $post->content) }}</textarea>
         @error('content')
             <p>{{ $message }}</p>
         @enderror
         <select name="category_id">
-            <option value="0">None</option>
+            <option value="">None</option>
             @foreach ($categorys as $category)
                 <option 
                     {{ $category->id == $post->category_id ? "selected" : "" }} 

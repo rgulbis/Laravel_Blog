@@ -3,7 +3,7 @@
     <h1>Create</h1>  
     <form method="POST" action="/posts/{{ $post->id }}">
         @csrf
-        <input name="content" type="text" placeholder="New post..">
+        <textarea name="content" placeholder="New post.."></textarea>
         <select name="category_id">
             <option value="">None</option>
             @foreach ($categorys as $category)

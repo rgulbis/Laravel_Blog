@@ -8,9 +8,25 @@ use Illuminate\Http\Request;
 
 class PostController
 {
-    public function index() {
-        $posts = Post::all();
-        return view("posts.index", compact("posts"));
+    public function index(Request $request) {
+        $categorys = Category::all();
+        $searchQuery = $request->query("query");
+        $categoryQuery = $request->query("query-category");
+
+        $posts = Post::query()
+        ->when($searchQuery, fn ($query) => 
+            $query->where('content', 'like', "%{$searchQuery}%")
+        )
+        ->when($categoryQuery, fn ($query) => 
+        $query->where('category_id', $categoryQuery)
+        )
+        ->get();
+
+        $categoryTag = $categoryQuery 
+        ? Category::where('id', $categoryQuery)->value('category_name') 
+        : null;
+
+        return view("posts.index", compact("posts", "categorys", "searchQuery", "categoryQuery", "categoryTag"));
     }
 
     public function show(Post $post) {
@@ -42,7 +58,7 @@ class PostController
     public function update(Request $request, Post $post) {
         $validated = $request->validate([
             "content" => ["required", "max:255"],
-            "category_id" => ["required"]
+            "category_id" => []
         ]);
         $post->content = $validated["content"];
         $post->category_id = $validated["category_id"];

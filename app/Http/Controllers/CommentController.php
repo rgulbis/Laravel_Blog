@@ -7,10 +7,6 @@ use Illuminate\Http\Request;
 
 class CommentController
 {
-    public function create(Comment $comment) {
-        return view("comments.create", compact("comment"));
-    }
-
     public function store(Request $request) {
         $validated = $request->validate([
             "name" => ["required", "max:25"],
@@ -22,7 +18,7 @@ class CommentController
             "comment" => $validated["comment"],
             "post_id" => $validated["post_id"],
         ]);
-        return redirect("/posts/" . $validated["post_id"]);
+        return redirect("/posts");
     }
 
     public function edit(Comment $comment) {
@@ -31,19 +27,15 @@ class CommentController
 
     public function update(Request $request, Comment $comment) {
         $validated = $request->validate([
-            "name" => ["required", "max:25"],
-            "comment" => ["required"],
-            "post_id" => ["required"]
+            "comment" => ["required"]
         ]);
-        $comment->name = $validated["name"];
         $comment->comment = $validated["comment"];
-        $comment->post_id = $validated["post_id"];
         $comment->save();
-        return redirect("/comments");
+        return redirect("/posts");;
     }
 
     public function destroy(Comment $comment) {
         $comment->delete();
-        return redirect("/comments");
+        return redirect("/posts");
     }
 }
