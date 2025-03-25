@@ -18,5 +18,7 @@
         @enderror
         <button>Submit</button>
     </form>
+    <x-slot:categories>
+    </x-slot:categories>
 </x-layout>
 {{-- meowmeowmeowmeowmeow         wilu tevi meow --}}

@@ -1,12 +1,10 @@
 <x-layout>
     <x-slot:title>Posts</x-slot:title>
-    <x-slot:navbar>
-    </x-slot:navbar>
     <div class="head">
         <h1>Posts</h1>
         <hr>
         <div class="filters">
-            <form>
+            <form id="{{ $searchQuery ? "" : "hidden"}}" >
                 {{-- Seit ir lai paliktu categorijas filtrs bet searchs ne --}}
                 <input hidden name="query" value="">
                 <input hidden name="query-category" value="{{ $categoryQuery }}">
@@ -15,7 +13,7 @@
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
                 </button>
             </form>
-            <form>
+            <form id="{{ $categoryTag ? "" : "hidden"}}">
                 {{-- Un te otradak --}}
                 <input hidden name="query" value="{{ $searchQuery }}">
                 <input hidden name="query-category" value="">
@@ -38,7 +36,7 @@
         @foreach ($posts as $post)
             <li>
                 <div class="post">
-                    <p href="/posts/{{ $post->id }}">{{ $post->content }}</p>
+                    <p>{{ $post->content }}</p>
                     <div class="options-wrap">
                         <svg class="options-dots" id="pointer" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-dots-vertical"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></svg>
                         <div class="options">
@@ -50,6 +48,7 @@
                             </form>
                         </div>
                     </div>
+                    <p class="post-category">{{ $post->category?->category_name ? '#' . $post->category->category_name : '' }}</p>
                 </div>
                 <div class="comments">
                     @if ($post->comments->isEmpty())
@@ -94,7 +93,11 @@
                         <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
                         <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M16 15l-4 4" /><path d="M8 15l4 4" /></svg>
                     </p>
-                    <p class="comment-bar-new" id="pointer">New+</p>
+                    <p class="comment-bar-new" id="pointer">
+                        New
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-minus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /></svg>                    
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+                    </p>
                 </div>
             </li>
         @endforeach

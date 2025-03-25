@@ -12,7 +12,7 @@ document.addEventListener("click", (event) => {
     if (event.target.closest(".comment-bar-new")) {
         const post = event.target.closest("li");
         const newcomment = post.querySelector(".create-comment");
-        newcomment.classList.toggle("active");
+        newcomment.classList.toggle("activenew");
     }
 });
 
