@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>Create</x-slot:title>
     <h1>Create</h1>  
-    <form method="POST" action="/categorys/{{ $category->id }}">
+    <form method="POST" action="/categorys">
         @csrf
         <input name="category_name" type="text" placeholder="New category..">
         @error('category_name')

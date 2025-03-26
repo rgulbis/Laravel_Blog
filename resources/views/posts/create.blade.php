@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>Create</x-slot:title>
     <h1>Create</h1>  
-    <form method="POST" action="/posts/{{ $post->id }}">
+    <form method="POST" action="/posts">
         @csrf
         <textarea name="content" placeholder="New post.."></textarea>
         <select name="category_id">
