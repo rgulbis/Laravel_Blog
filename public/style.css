@@ -144,12 +144,6 @@ body {
     padding: 10px 30pt;
 }
 
-.navbar hr {
-    border: none;
-    height: 2px;
-    background-color: var(--primary-content);
-}
-
 .theme {
     cursor: pointer;
     user-select: none;
@@ -331,13 +325,6 @@ li:has(.comments.active) .comments-bar p:nth-child(1) svg:nth-child(2) {
     border: 1px solid var(--border);
 }
 
-.head hr {
-    border: none;
-    height: 2px;
-    background-color: var(--primary-content);
-    margin-bottom: 4px;
-}
-
 .comment {
     background-color: var(--foreground);
     padding: 20px;
@@ -496,13 +483,6 @@ li:has(.create-comment.activenew) .comments-bar p:nth-child(2) svg:nth-child(2) 
     margin-bottom: 10px;
 }
 
-.categories hr {
-    border: none;
-    height: 2px;
-    background-color: var(--primary-content);
-    margin-bottom: 4px;
-}
-
 .search-field div {
     display: flex;
     justify-content: center;
@@ -526,7 +506,7 @@ li:has(.create-comment.activenew) .comments-bar p:nth-child(2) svg:nth-child(2) 
     border: 1px solid var(--border);
     background-color: var(--secondary-light);
     color: var(--secondary-content);
-    padding: 4px 8px;
+    padding: 5px 8px;
 }
 
 .categories .search-field button:hover {
@@ -559,7 +539,7 @@ li:has(.create-comment.activenew) .comments-bar p:nth-child(2) svg:nth-child(2) 
     border: 1px solid var(--border);
     background-color: var(--secondary-light);
     color: var(--secondary-content);
-    padding: 4px 8px;
+    padding: 5px 8px;
 }
 
 .categories .search-categories button:hover {
@@ -580,4 +560,94 @@ li:has(.create-comment.activenew) .comments-bar p:nth-child(2) svg:nth-child(2) 
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+body:has(.create-post) .categories, body:has(.categories-all) .categories{
+    display: none;
+}
+
+body:has(.create-post) .content, body:has(.categories-all) .content {
+    margin: 0;
+    justify-content: center;
+}
+
+hr {
+    border: none;
+    height: 2px;
+    background-color: var(--primary-content);
+    margin-bottom: 4px;
+}
+
+.create-post {
+    background-color: var(--foreground);
+    padding: 20px;
+    border-radius: 20px;
+    gap: 6px;
+    align-items: center;
+    border: 1px solid var(--border);
+    margin-bottom: 200px;
+}
+
+.create-post textarea {
+    width: 100%;
+    resize: none;
+    height: 70px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    background-color: var(--background);
+    color: var(--copy);
+    padding: 4px 8px;
+    border: 1px solid var(--border);
+}
+
+.create-post select {
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    background-color: var(--background);
+    color: var(--copy);
+    padding: 4px 8px;
+    border: 1px solid var(--border);
+}
+
+.create-post button {
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    border: 1px solid var(--border);
+    background-color: var(--secondary-light);
+    color: var(--secondary-content);
+    padding: 5px 8px;
+}
+
+.create-post button:hover {
+    background-color: var(--secondary);
+}
+
+.categories-all {
+    background-color: var(--foreground);
+    padding: 20px;
+    border-radius: 20px;
+    gap: 6px;
+    align-items: center;
+    border: 1px solid var(--border);
+    margin-top: 6px;
+    justify-self: center;
+    margin-bottom: 200px;
+}
+
+.categories-all ul {
+    margin-left: 20px;
+}
+
+.categories-all li, .categories-all a {
+    list-style: disc;
+    color: var(--copy);
+    text-decoration: none;
+}
+
+.categories-all a:hover {
+    text-decoration: underline;
+    color: var(--copy-light);
 }
