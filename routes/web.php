@@ -10,7 +10,7 @@ use App\Http\Controllers\RegisterController;
 
 // Auth
 
-Route::get('/', [SessionController::class, 'create'])->middleware("guest");
+Route::get('/', [PostController::class, 'index']);
 
 Route::get('/login', [SessionController::class, 'create'])->name("login")->middleware("guest");
 Route::post('/login', [SessionController::class, 'store'])->middleware("guest");
