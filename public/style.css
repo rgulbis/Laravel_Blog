@@ -69,6 +69,10 @@ body, html {
     display: none;
 }
 
+#hidden-vis {
+    visibility: collapse;
+}
+
 /* Body layout */
 
 body {
