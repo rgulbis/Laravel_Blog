@@ -78,6 +78,8 @@ body {
 /* Navbar */
 
 .navbar {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     height: 100dvh;
     background-color: var(--primary);
@@ -117,7 +119,7 @@ body {
     justify-content: center;
     color: var(--secondary-content);
     gap: 6px;
-    margin-left: 6px;
+    margin-left: 5px;
 }
 
 .navbar li {
@@ -562,11 +564,11 @@ li:has(.create-comment.activenew) .comments-bar p:nth-child(2) svg:nth-child(2) 
     align-items: center;
 }
 
-body:has(.create-post) .categories, body:has(.categories-all) .categories{
+body:has(.create-post) .categories, body:has(.categories-all) .categories, body:has(.auth-form) .categories{
     display: none;
 }
 
-body:has(.create-post) .content, body:has(.categories-all) .content {
+body:has(.create-post) .content, body:has(.categories-all) .content, body:has(.auth-form) .content{
     margin: 0;
     justify-content: center;
 }
@@ -575,7 +577,7 @@ hr {
     border: none;
     height: 2px;
     background-color: var(--primary-content);
-    margin-bottom: 4px;
+    margin-bottom: 8px;
 }
 
 .create-post {
@@ -652,5 +654,84 @@ hr {
     color: var(--copy-light);
 }
 
+.navbar .account {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-content);
+    gap: 6px;
+    margin-top: auto;
+    margin-bottom: 10px;
+}
 
+.navbar .account button {
+    padding: 2px 0;
+    gap: 2px;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-align: left;
+    border: none;
+    background: none;
+    font-size: 16px;
+}
 
+.navbar .account button:hover {
+    text-decoration: underline;
+}
+
+.auth-form {
+    background-color: var(--foreground);
+    padding: 20px;
+    border-radius: 20px;
+    gap: 6px;
+    align-items: center;
+    border: 1px solid var(--border);
+    margin-bottom: 200px;
+}
+
+.auth-form div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.auth-form input {
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    background-color: var(--background);
+    color: var(--copy);
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    width: 100%;
+}
+
+.auth-form button {
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    border: 1px solid var(--border);
+    background-color: var(--secondary-light);
+    color: var(--secondary-content);
+    padding: 6px 12px;
+}
+
+.auth-form button:hover {
+    background-color: var(--secondary);
+}
+
+.auth-form a {
+    color: var(--copy);
+    text-decoration: none;
+    transition: all 0.1s ease;
+}
+
+.auth-form a:hover{
+    color: var(--secondary-content);
+    text-decoration: underline;
+}

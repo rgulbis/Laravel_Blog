@@ -37,7 +37,7 @@
             <li>
                 <div class="post">
                     <p>{{ $post->content }}</p>
-                    <div class="options-wrap">
+                    <div class="options-wrap" id="{{ !(Auth::user()->id == $post->user_id) ? "hidden" : "" }}">
                         <svg class="options-dots" id="pointer" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-dots-vertical"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></svg>
                         <div class="options">
                             <a href="/posts/{{ $post->id }}/edit">Edit</a>
@@ -64,7 +64,7 @@
                             <h4 class="comment-name">{{ $comment->name }}</h4>
                             <h4 class="comment-date">{{ $comment->created_at->timezone('Europe/Riga')->format('d.m.Y H:i:s') }}</h4>
                             <p class="comment-comment">{{ $comment->comment }}</p>
-                            <div class="options-wrap">
+                            <div class="options-wrap" id="{{ !(Auth::user()->id == $comment->user_id) ? "hidden" : "" }}">
                                 <svg class="options-dots" id="pointer" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-dots-vertical"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></svg>
                                 <div class="options">
                                     <a href="/comments/{{ $comment->id }}/edit">Edit</a>
@@ -82,7 +82,7 @@
                     <form method="POST" action="/comments">
                         @csrf
                         <input name="post_id" value="{{ $post->id }}" hidden>
-                        <input class="create-comment-name" name="name" type="text" placeholder="Name.."> 
+                        <input class="create-comment-name" name="name" value="{{ Auth::user()->first_name ?? "" }}" type="text" placeholder="Name.." readonly> 
                         <textarea class="create-comment-comment" name="comment" placeholder="Your Comment.."></textarea>
                         <button class="create-comment-button" id="pointer">Submit</button>
                     </form>

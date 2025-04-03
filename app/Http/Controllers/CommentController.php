@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController
 {
@@ -17,6 +18,7 @@ class CommentController
             "name" => $validated["name"],
             "comment" => $validated["comment"],
             "post_id" => $validated["post_id"],
+            "user_id" => Auth::user()->id
         ]);
         return redirect("/posts");
     }

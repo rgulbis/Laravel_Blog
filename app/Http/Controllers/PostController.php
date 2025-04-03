@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class PostController
@@ -41,11 +42,12 @@ class PostController
     public function store(Request $request) {
         $validated = $request->validate([
             "content" => ["required", "max:255"],
-            "category_id" => []
+            "category_id" => [],
         ]);          
         Post::create([
             "content" => $validated["content"],
-            "category_id" => $validated["category_id"]
+            "category_id" => $validated["category_id"],
+            "user_id" => Auth::user()->id
         ]);
         return redirect("/posts");
     }
