@@ -568,11 +568,11 @@ li:has(.create-comment.activenew) .comments-bar p:nth-child(2) svg:nth-child(2) 
     align-items: center;
 }
 
-body:has(.create-post) .categories, body:has(.categories-all) .categories, body:has(.auth-form) .categories{
+body:has(.create-post) .categories, body:has(.categories-all) .categories, body:has(.auth-form) .categories, body:has(.create-category) .categories{
     display: none;
 }
 
-body:has(.create-post) .content, body:has(.categories-all) .content, body:has(.auth-form) .content{
+body:has(.create-post) .content, body:has(.categories-all) .content, body:has(.auth-form) .content, body:has(.create-category) .content{
     margin: 0;
     justify-content: center;
 }
@@ -738,4 +738,103 @@ hr {
 .auth-form a:hover{
     color: var(--secondary-content);
     text-decoration: underline;
+}
+
+@keyframes slidein {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+@keyframes slideout {
+    from {
+        width: 100%;
+        opacity: 1;
+    }
+
+    to {
+        width: 0;
+        opacity: 0;
+    }
+}
+
+.error.closed {
+    animation: slideout forwards 0.5s ease-in;
+}
+
+.error {
+    overflow: hidden;
+    white-space: nowrap;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    font-weight: 600;
+    grid-template-columns: max-content auto;
+    animation: slidein forwards 0.5s ease-out;
+    padding: 10px 14px;
+    background-color: var(--background);
+    color: var(--copy);
+    border-radius: 15px 0 0 15px;
+    border-top: var(--error) solid 4px;
+    border-left: var(--error) solid 4px;
+    border-bottom: var(--error) solid 4px;
+}
+
+.error svg {
+    transition: all 0.3s ease-out;
+}
+
+.error svg:hover {
+    transform: rotate(90deg);
+}
+
+.errors {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 10px;
+    top: 10px;
+    right: 0;
+}
+
+.create-category {
+    background-color: var(--foreground);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    margin-bottom: 200px;
+}
+
+.create-category input {
+    width: 100%;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    background-color: var(--background);
+    color: var(--copy);
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+}
+
+.create-category button {
+    margin-top: 4px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    border: 1px solid var(--border);
+    background-color: var(--secondary-light);
+    color: var(--secondary-content);
+    padding: 5px 8px;
+}
+
+.create-category button:hover {
+    background-color: var(--secondary);
 }

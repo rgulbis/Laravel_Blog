@@ -5,7 +5,6 @@
         <hr>
         <div class="filters">
             <form id="{{ $searchQuery ? "" : "hidden"}}" >
-                {{-- Seit ir lai paliktu categorijas filtrs bet searchs ne --}}
                 <input hidden name="query" value="">
                 <input hidden name="query-category" value="{{ $categoryQuery }}">
                 <button class="tag">
@@ -14,7 +13,6 @@
                 </button>
             </form>
             <form id="{{ $categoryTag ? "" : "hidden"}}">
-                {{-- Un te otradak --}}
                 <input hidden name="query" value="{{ $searchQuery }}">
                 <input hidden name="query-category" value="">
                 <button class="tag">

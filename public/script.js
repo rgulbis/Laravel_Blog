@@ -14,6 +14,10 @@ document.addEventListener("click", (event) => {
         const newcomment = post.querySelector(".create-comment");
         newcomment.classList.toggle("activenew");
     }
+    if (event.target.closest(".error-x")) {
+        const error = event.target.closest("li");
+        error.classList.toggle("closed");
+    }
 });
 
 const themeSwitch = document.getElementById("theme-button");
