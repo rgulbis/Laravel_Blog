@@ -764,8 +764,15 @@ hr {
     }
 }
 
+@keyframes die {
+    to {
+        display: none;
+    }
+}
+
 .error.closed {
-    animation: slideout forwards 0.5s ease-in;
+    animation: slideout 0.5s ease-in forwards, die 0.1s ease-in forwards;
+    animation-delay: 0s, 0.5s;
 }
 
 .error {
